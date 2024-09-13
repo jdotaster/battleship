@@ -1,16 +1,37 @@
+const ShipType = {
+    carrier :{
+        type: 'carrier',
+        length: 5
+    },
+    battleship :{
+        type: 'battleship',
+        length: 4
+    },
+    cruiser :{
+        type: 'cruiser',
+        length: 3
+    },
+    submarine :{
+        type: 'submarine',
+        length: 3
+    },
+    destroyer :{
+        type: 'destroyer',
+        length: 2
+    }
+}
+
 const Ship = () => {
     let length,
+        type,
         hitCount,
         sunk;
 
-    const create = (l) => {
-        length = l;
+    const create = (ship) => {
+        length = ship.length;
+        type = ship.type;
         hitCount = 0;
         sunk = false;
-    }
-
-    const getLength = () => {
-        return length;
     }
 
     const getHitCount = () => {
@@ -29,7 +50,13 @@ const Ship = () => {
         return hitCount === length;
     }
 
-    return { create, getLength, getHitCount, hit, getSunk, isSunk };
+    return { 
+        create, 
+        getHitCount, 
+        hit, 
+        getSunk, 
+        isSunk 
+    };
 }
 
-export default Ship;
+export { Ship, ShipType };
